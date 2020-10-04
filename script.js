@@ -1,22 +1,32 @@
-console.log('Hello JS');
 
-const jen = { firstName: 'Jen', lastName: 'Barber', ID: '4521', title: 'Team Lead', annualSalary: 80000 };
-const maurice = { firstName: 'Maurice', lastName: 'Moss', ID: '8724', title: 'Support Team', annualSalary: 58000 };
-const roy = { firstName: 'Roy', lastName: 'Smith', ID: '9623', title: 'Quality Assurance', annualSalary: 48000};
+const employees  = [];
 
-const employees  = [jen,maurice,roy];
-
-
+const totalMonthly = ();
 
 $(document).ready(onReady);
 
 function onReady() {
+    console.log('Hello JS');
 
     $('#submitEmployee').on('click', submit);
     
-    $('#table').on('click',displayEmployees);
+    $('#table').append(`<tr><th> First Name </th>
+                        <th> Last Name </th>
+                        <th> ID </th> 
+                        <th> Title </th>
+                        <th> Annual Salary </th>
+                        <th></th></tr>`);
+
+    $('#table').on('click','.delete',deleteEmployee)
+    
+    $('#monthlyBudget').append()
     
 }
+
+function addSalary(){
+
+}
+
 
 function submit(){
     console.log('clicked');
@@ -44,20 +54,37 @@ function submit(){
 
         console.log(addEmployee);
         
-        
+        displayEmployees();
       
 }
 
-function displayEmployees() {
-    console.log('in displayEmployees');
+function deleteEmployee(){
+    console.log('delete');
+    $(this).parent().remove();
+    
+}
 
+function displayEmployees() {
+    
+    
     
     let el = $('#table');
-    el.empty();
+    // el.empty();
 
-    for (let i = 0; i < addEmployees.length; i++){
-        el.append(`<table> ${addEmployees[i]} </table>`)
+    $('.rows').empty();
+
+    for (let i = 0; i < employees.length; i++){
+        el.append(`<tr class = 'rows'><td> ${employees[i].firstName} </td>
+                        <td> ${employees[i].lastName} </td> 
+                        <td> ${employees[i].ID} </td>
+                        <td> ${employees[i].title} </td>
+                        <td> $${employees[i].annualSalary} </td>
+                        <td><button class = 'delete' >Delete</button></td>
+                    </tr>`)
     }
+    let el =
+    for (let i =0; i <employees.length; i++)
+
         
    
     
