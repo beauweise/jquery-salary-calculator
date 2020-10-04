@@ -1,7 +1,7 @@
 
 const employees  = [];
 
-const totalMonthly = ();
+let yearlyTotal = 0;
 
 $(document).ready(onReady);
 
@@ -55,19 +55,19 @@ function submit(){
         console.log(addEmployee);
         
         displayEmployees();
-      
+        
 }
 
 function deleteEmployee(){
     console.log('delete');
-    $(this).parent().remove();
+    $(this).parent().parent().remove();
     
 }
 
 function displayEmployees() {
     
     
-    
+    yearlyTotal = 0;  
     let el = $('#table');
     // el.empty();
 
@@ -81,9 +81,11 @@ function displayEmployees() {
                         <td> $${employees[i].annualSalary} </td>
                         <td><button class = 'delete' >Delete</button></td>
                     </tr>`)
+        
+    yearlyTotal += employees[i].annualSalary;       
     }
-    let el =
-    for (let i =0; i <employees.length; i++)
+    $('#monthlyBudget').empty();
+    $('#monthlyBudget').append( 'Monthly Total : $' + yearlyTotal/12)
 
         
    
