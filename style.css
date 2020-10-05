@@ -6,19 +6,19 @@ table {
   }
   
   td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
+    border: 1px solid #000000;
+    text-align: center;
+    padding: 2px;
     
   }
   
-  tr:nth-child(even) {
-    background-color: #dddddd;
+  tr:nth-child(odd) {
+    background-color: #dddddd; 
   }
   body{
     background-color:white;
     width: 1000px;
-    border: 5px solid black;
+    border: 2px solid black;
     margin: auto;
   }
 h1{

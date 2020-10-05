@@ -47,15 +47,14 @@ function submit(){
         $('#title').val('');
         $('#annualSalary').val('');
 
-        
         displayEmployees();                         // displayEmployee funtion
-        
 }
+
 
 function deleteEmployee(){
     $(this).parent().parent().remove();             //delete button goes here to remove this line
-    
 }
+
 
 function displayEmployees() {
     
