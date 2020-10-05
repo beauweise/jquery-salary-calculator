@@ -1,66 +1,59 @@
 
 const employees  = [];
 
-let yearlyTotal = 0;
+let yearlyTotal = 0; 
 
 $(document).ready(onReady);
 
 function onReady() {
-    console.log('Hello JS');
+    
 
     $('#submitEmployee').on('click', submit);
     
-    $('#table').append(`<tr><th> First Name </th>
+    $('#table').append(`<tr><th> First Name </th> 
                         <th> Last Name </th>
                         <th> ID </th> 
                         <th> Title </th>
                         <th> Annual Salary </th>
-                        <th></th></tr>`);
+                        <th></th></tr>`); //table header
 
-    $('#table').on('click','.delete',deleteEmployee)
+    $('#table').on('click','.delete',deleteEmployee); //delete employee button
     
-    $('#monthlyBudget').append()
+    
     
 }
 
-function addSalary(){
-
-}
 
 
 function submit(){
-    console.log('clicked');
 
-
-        let firstName = $('#firstName').val();
-        let lastName = $('#lastName').val();
-        let ID  = $('#ID').val();
-        let title = $('#ID').val();
-        let annualSalary = $('#annualSalary').val();
+        let firstName = $('#firstName').val();          // input for firstName  
+        let lastName = $('#lastName').val();            // input for lastName   
+        let ID  = $('#ID').val();                       // input for ID
+        let title = $('#title').val();                  // inout for title
+        let annualSalary = $('#annualSalary').val();    // input for annualSalary
     
-        let addEmployee = {
+        let addEmployee = {                         // addEmployee object
             firstName:  firstName,
             lastName: lastName,
             ID: ID,
             title: title,
             annualSalary: annualSalary
         }
-        employees.push(addEmployee);
-        $('#firstName').val('');
+        employees.push(addEmployee);                //addemployee object pushed to employees
+        $('#firstName').val('');                    //empty input
         $('#lastName').val('');
         $('#ID').val('');
         $('#title').val('');
         $('#annualSalary').val('');
 
-        console.log(addEmployee);
         
-        displayEmployees();
+        displayEmployees();                         // displayEmployee funtion
         
 }
 
 function deleteEmployee(){
-    console.log('delete');
-    $(this).parent().parent().remove();
+    $(this).parent().parent().remove();             //delete button goes here to remove this line
     
 }
 
@@ -68,26 +61,31 @@ function displayEmployees() {
     
     
     yearlyTotal = 0;  
+    
     let el = $('#table');
-    // el.empty();
+    
 
-    $('.rows').empty();
+    $('.rows').empty();                     //empty rows in <tr>
 
-    for (let i = 0; i < employees.length; i++){
-        el.append(`<tr class = 'rows'><td> ${employees[i].firstName} </td>
+    for (let i = 0; i < employees.length; i++){ //looping through emolyees array
+        el.append(`<tr class = 'rows'><td> ${employees[i].firstName} </td> 
                         <td> ${employees[i].lastName} </td> 
                         <td> ${employees[i].ID} </td>
                         <td> ${employees[i].title} </td>
                         <td> $${employees[i].annualSalary} </td>
                         <td><button class = 'delete' >Delete</button></td>
-                    </tr>`)
+                    </tr>`)//making the table with looped employees
         
-    yearlyTotal += employees[i].annualSalary;       
+    yearlyTotal += Number(employees[i].annualSalary);  //adding yearlyTotal with annual salaries loop
+
+    
     }
     $('#monthlyBudget').empty();
-    $('#monthlyBudget').append( 'Monthly Total : $' + yearlyTotal/12)
-
-        
+    $('#monthlyBudget').append( 'Monthly Total : $' + yearlyTotal/12);// yearly total divided to get monthly total
+    
+     if(yearlyTotal/12 >= 20000) {
+        document.getElementById("monthlyBudget").style.color = "#ff0000";
+     }  
    
     
 }
